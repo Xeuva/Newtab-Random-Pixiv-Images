@@ -34,8 +34,8 @@ const saveOptions = () => {
     }
   );
 
-  chrome.runtime.sendMessage({ action: "updateConfig" }, function (response) {
-    var lastError = chrome.runtime.lastError;
+  chrome.runtime.sendMessage({ action: "updateConfig" }, (response) => {
+    let lastError = chrome.runtime.lastError;
     if (lastError) {
       console.log(lastError.message);
       return;
@@ -129,3 +129,36 @@ document.getElementById('andKeywords').addEventListener('input', updateKeywords)
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('save').addEventListener('click', saveOptions);
 document.getElementById('reset').addEventListener('click', resetOptions);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const langSelect = document.getElementById("languageSelect");
+  const defaultLang = localStorage.getItem("language") || "en";
+  langSelect.value = defaultLang;
+
+  function loadTranslations(lang) {
+    fetch(`_locales/${lang}/messages.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        document.querySelectorAll("[id]").forEach((el) => {
+          if (data[el.id]) {
+            el.textContent = data[el.id].message;
+          }
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-placeholder");
+          if (data[key]) {
+            el.placeholder = data[key].message;
+          }
+        });
+      })
+      .catch((error) => console.error("Error loading translations:", error));
+  }
+
+  loadTranslations(defaultLang);
+
+  langSelect.addEventListener("change", (event) => {
+    const selectedLang = event.target.value;
+    localStorage.setItem("language", selectedLang);
+    loadTranslations(selectedLang);
+  });
+});

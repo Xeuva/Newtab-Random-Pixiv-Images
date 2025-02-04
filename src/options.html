@@ -117,109 +117,122 @@
 
 <body>
   <div class="container">
+    <div style="position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 5px;">
+      <span>🌐</span>
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
+
+
+
     <div class="group">
-      <label for="keywords">完整关键词</label>
+      <label id="keywordsLabel" for="keywords"></label>
       <input type="text" id="keywords" name="keywords" readonly />
 
       <div class="sub_group">
-        <label for="andKeywords">含有全部关键词(AND搜索)</label>
+        <label id="andKeywordsLabel" for="andKeywords"></label>
         <input type="text" id="andKeywords" name="andKeywords" />
         <div>
           <div class="group">
-            <label for="orKeywords">含有某个关键词(OR搜索)</label>
+            <label id="orKeywordsLabel" for="orKeywords"></label>
             <input type="text" id="orKeywords" name="orKeywords" />
           </div>
           <div class="group">
-            <label for="minusKeywords">不含有关键词(排除搜索)</label>
+            <label id="minusKeywordsLabel" for="minusKeywords"></label>
             <input type="text" id="minusKeywords" name="minusKeywords" />
           </div>
-          <div class="tip">多个关键词用空格隔开</div>
+          <div id="keywordsTip" class="tip"></div>
         </div>
       </div>
 
     </div>
 
     <div class="group">
-      <label for="order">排序方式</label>
+      <label id="orderLabel" for="order"></label>
       <select id="order" name="order">
-        <option value="date_d">按最新排序</option>
-        <option value="date">按旧排序</option>
-        <option value="popular_d">按热门度排序(是pixiv高级会员才有效)</option>
-        <option value="popular_male_d">受男性欢迎(是pixiv高级会员才有效)</option>
-        <option value="popular_female_d">受女性欢迎(是pixiv高级会员才有效)</option>
+        <option id="date_dOrder" value="date_d"></option>
+        <option id="dateOrder" value="date"></option>
+        <option id="popular_dOrder" value="popular_d"></option>
+        <option id="popular_male_dOrder" value="popular_male_d"></option>
+        <option id="popular_female_dOrder" value="popular_female_d"></option>
       </select>
     </div>
 
     <div class="group">
-      <label for="mode">搜索模式</label>
+      <label id="modeLabel" for="mode"></label>
       <select id="mode" name="mode">
-        <option value="all">全部</option>
-        <option value="r18">R18</option>
-        <option value="safe">全年龄</option>
+        <option id="allMode" value="all"></option>
+        <option id="r18Mode" value="r18"></option>
+        <option id="safeMode" value="safe"></option>
       </select>
     </div>
 
     <div class="group">
-      <label for="timeOption">时间</label>
+      <label id="timeOptionLabel" for="timeOption"></label>
       <select id="timeOption" name="timeOption">
-        <option value="unlimited">不限时间</option>
-        <option value="specific">指定时间</option>
+        <option id="unlimitedTimeOption" value="unlimited"></option>
+        <option id="specificTimeOption" value="specific"></option>
       </select>
     </div>
 
     <div id="dateInputs" style="display: none;">
       <div class="group">
-        <label for="scd">开始时间</label>
+        <label id="scdLabel" for="scd"></label>
         <input type="date" id="scd" name="scd" />
       </div>
       <div class="group">
-        <label for="ecd">结束时间</label>
+        <label id="ecdLabel" for="ecd"></label>
         <input type="date" id="ecd" name="ecd" />
       </div>
     </div>
 
     <div class="group">
-      <label>喜欢数(是pixiv高级会员才有效)</label>
+      <label id="bookmarksLabel"></label>
       <div class="sub_group">
-        <label for="blt">最低喜欢数(是pixiv高级会员才有效)</label>
-        <input type="number" id="blt" name="blt" placeholder="留空表示不限" />
-        <label for="bgt">最高喜欢数(是pixiv高级会员才有效)</label>
-        <input type="number" id="bgt" name="bgt" placeholder="留空表示不限" />
+        <label id="bltLabel" for="blt"></label>
+        <input type="number" id="blt" name="blt" data-i18n-placeholder="leave_blank_for_unlimited" />
+        <label id="bgtLabel" for="bgt"></label>
+        <input type="number" id="bgt" name="bgt" data-i18n-placeholder="leave_blank_for_unlimited" />
       </div>
     </div>
 
     <div class="group">
-      <label for="s_mode">标签搜索模式</label>
+      <label id="s_modeLabel" for="s_mode"></label>
       <select id="s_mode" name="s_mode">
-        <option value="s_tag">标签(部分一致)</option>
-        <option value="s_tag_full">标签(完全一致)</option>
-        <option value="s_tc">标题、说明文字</option>
+        <option id="s_tagOption" value="s_tag"></option>
+        <option id="s_tag_fullOption" value="s_tag_full"></option>
+        <option id="s_tcOption" value="s_tc"></option>
       </select>
     </div>
 
     <div class="group">
-      <label for="type">图片类型搜索模式</label>
+      <label id="typeLabel" for="type"></label>
       <select id="type" name="type">
-        <option value="all">全部</option>
-        <option value="illust_and_ugoira">插画、动图</option>
-        <option value="illust">插画</option>
-        <option value="manga">漫画</option>
-        <option value="ugoira">动图</option>
+        <option id="allTypeLabel" value="all"></option>
+        <option id="illust_and_ugoiraTypeLabel" value="illust_and_ugoira"></option>
+        <option id="illustTypeLabel" value="illust"></option>
+        <option id="mangaTypeLabel" value="manga"></option>
+        <option id="ugoiraTypeLabel" value="ugoira"></option>
       </select>
     </div>
 
     <div class="group">
-      <label>sl filter(perhaps pixiv safe level, 2 is safe, 6 is not safe)</label>
+      <label id="slLabel"></label>
       <div class="sub_group">
         <label for="min_sl">min sl</label>
-        <input type="number" id="min_sl" name="min_sl" min="2" max="6" placeholder="留空表示不限" />
+        <input type="number" id="min_sl" name="min_sl" min="2" max="6"
+          data-i18n-placeholder="leave_blank_for_unlimited" />
         <label for="max_sl">max sl</label>
-        <input type="number" id="max_sl" name="max_sl" min="2" max="6" placeholder="留空表示不限" />
+        <input type="number" id="max_sl" name="max_sl" min="2" max="6"
+          data-i18n-placeholder="leave_blank_for_unlimited" />
       </div>
     </div>
 
     <div class="group">
-      <label for="aiType">aiType (pixiv ai type, 1 not ai, 2 is ai)</label>
+      <label id="aiTypeLabel" for="aiType"></label>
       <select id="aiType" name="aiType">
         <option value='1'>1</option>
         <option value='2'>2</option>
