@@ -1,3 +1,5 @@
+English/[中文](./readme_cn.md)
+
 # Newtab Random Pixiv Images
 
 Randomly picks one image from pixiv search results to replace newtab background. By default search uses "10000users入り" keyword. In bottom right corner, you can load new image or check image details.You may need to login Pixiv first to make search functionality work.
