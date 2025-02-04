@@ -19,8 +19,6 @@ Randomly picks one image from pixiv search results to replace newtab background.
 4. Click "Load Temporary Add-on..." button, then in the open window goto the "src_firefox" directory, select "manifest.json" file.
 5. Open newtab and enjoy a randomly picked pixiv illustration!
 
-##### Note: The image transition effect in firefox will not work like chrome.
-
 ## License
 
 This extension is distributed under MIT license.

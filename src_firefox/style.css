@@ -5,14 +5,17 @@
   text-decoration: none;
   color: #fff;
 }
+
 body {
   margin: 0;
   padding: 0;
   border: 0;
 }
+
 .notReady {
   visibility: hidden;
 }
+
 .maskLayer {
   position: fixed;
   width: 100%;
@@ -25,6 +28,7 @@ body {
   top: 0;
   bottom: 0;
 }
+
 #wallpaper {
   left: 0;
   right: 0;
@@ -32,6 +36,7 @@ body {
   bottom: 0;
   z-index: -1;
 }
+
 #backgroundImage {
   position: fixed;
   width: 100%;
@@ -66,6 +71,7 @@ body {
   cursor: pointer;
   transition: background-color 0.5s;
 }
+
 #refreshButton:hover {
   background-color: rgba(23, 24, 25, 1);
 }
@@ -75,23 +81,28 @@ body {
   animation-fill-mode: forwards;
   animation-duration: 0.2s;
 }
+
 #refreshButton.unpressed {
   animation-name: endRotation;
   animation-fill-mode: forwards;
   animation-duration: 0.3s;
 }
+
 @keyframes beginRotation {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(45deg);
   }
 }
+
 @keyframes endRotation {
   from {
     transform: rotate(45deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -128,6 +139,7 @@ body {
   margin-top: 5px;
   margin-left: 5px;
 }
+
 #description {
   display: inline-block;
   margin-top: 5px;
@@ -135,6 +147,7 @@ body {
   vertical-align: top;
   width: 135px;
 }
+
 #illustTitle {
   display: block;
   font-size: 14px;
@@ -142,6 +155,7 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 #illustName {
   display: block;
   font-size: 12px;

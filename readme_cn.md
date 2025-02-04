@@ -19,8 +19,6 @@
 4. 点击 Load Temporary Add-on... 按钮，进入 src_firefox 目录选择 manifest.json 文件
 5. 打开新标签页
 
-##### 注意：Firefox 版本的图片过渡动画效果与 Chrome 版本存在差异
-
 ## 许可证
 
 本扩展遵循 MIT 开源协议发布

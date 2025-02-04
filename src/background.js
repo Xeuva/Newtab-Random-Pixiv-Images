@@ -248,7 +248,8 @@ async function start() {
             res = await searchSource.getRandomIllust();
           }
           sendResponse(res);
-          console.log(res);
+          let { profileImageUrl, imageObjectUrl, ...filteredRes } = res;
+          console.log(filteredRes);
           while (running < illust_queue.capacity() - illust_queue.size()) {
             ++running;
             setTimeout(async () => {

@@ -1,20 +1,21 @@
 {
   "name": "Newtab Random Pixiv Images",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "manifest_version": 2,
+  "default_locale": "en",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
   "background": {
-    "scripts": [
-      "background.js"
-    ],
+    "page": "bg.html",
     "persistent": true
   },
   "permissions": [
+    "storage",
     "webRequest",
     "webRequestBlocking",
     "*://*.pixiv.net/*",
     "*://*.pximg.net/*"
-  ]
+  ],
+  "options_page": "options.html"
 }

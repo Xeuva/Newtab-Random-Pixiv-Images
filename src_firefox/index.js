@@ -110,19 +110,23 @@
       if (messageQueue.length === 1) {
         queueMicrotask(() => {
           browser.runtime.sendMessage({ action: "fetchImage" }, (res) => {
-            changeElement(res).then(() => {
-              messageQueue.length = 0;
-            });
+            if (browser.runtime.lastError) {
+              setTimeout(() => {
+                messageQueue.length = 0;
+                sendRefreshMessage();
+              }, 100);
+            } else {
+              changeElement(res).then(() => {
+                messageQueue.length = 0;
+              });
+            }
           });
         });
       }
     };
   })();
 
-  document.onreadystatechange = function () {
-    if (document.readyState === "interactive") {
-      initApplication();
-      sendRefreshMessage();
-    }
-  };
+  initApplication();
+  sendRefreshMessage();
+  console.log("content script loaded");
 })();
