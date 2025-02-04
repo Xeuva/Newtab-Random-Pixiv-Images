@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Newtab Random Pixiv Images Options</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+      color: #444;
+    }
+
+    .group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      background-color: #fafafa;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+      border-color: #007acc;
+      background-color: #fff;
+    }
+
+    input[readonly] {
+      background-color: #e9e9e9;
+    }
+
+    .tip {
+      font-size: 12px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: green;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    #dateInputs {
+      padding-left: 10px;
+      border-left: 3px solid #007acc;
+      margin-top: 10px;
+    }
+
+    .sub_group {
+      padding-left: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="group">
+      <label for="keywords">完整关键词</label>
+      <input type="text" id="keywords" name="keywords" readonly />
+
+      <div class="sub_group">
+        <label for="andKeywords">含有全部关键词(AND搜索)</label>
+        <input type="text" id="andKeywords" name="andKeywords" />
+        <div>
+          <div class="group">
+            <label for="orKeywords">含有某个关键词(OR搜索)</label>
+            <input type="text" id="orKeywords" name="orKeywords" />
+          </div>
+          <div class="group">
+            <label for="minusKeywords">不含有关键词(排除搜索)</label>
+            <input type="text" id="minusKeywords" name="minusKeywords" />
+          </div>
+          <div class="tip">多个关键词用空格隔开</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="group">
+      <label for="order">排序方式</label>
+      <select id="order" name="order">
+        <option value="date_d">按最新排序</option>
+        <option value="date">按旧排序</option>
+        <option value="popular_d">按热门度排序(是pixiv高级会员才有效)</option>
+        <option value="popular_male_d">受男性欢迎(是pixiv高级会员才有效)</option>
+        <option value="popular_female_d">受女性欢迎(是pixiv高级会员才有效)</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label for="mode">搜索模式</label>
+      <select id="mode" name="mode">
+        <option value="all">全部</option>
+        <option value="r18">R18</option>
+        <option value="safe">全年龄</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label for="timeOption">时间</label>
+      <select id="timeOption" name="timeOption">
+        <option value="unlimited">不限时间</option>
+        <option value="specific">指定时间</option>
+      </select>
+    </div>
+
+    <div id="dateInputs" style="display: none;">
+      <div class="group">
+        <label for="scd">开始时间</label>
+        <input type="date" id="scd" name="scd" />
+      </div>
+      <div class="group">
+        <label for="ecd">结束时间</label>
+        <input type="date" id="ecd" name="ecd" />
+      </div>
+    </div>
+
+    <div class="group">
+      <label>喜欢数(是pixiv高级会员才有效)</label>
+      <div class="sub_group">
+        <label for="blt">最低喜欢数(是pixiv高级会员才有效)</label>
+        <input type="number" id="blt" name="blt" placeholder="留空表示不限" />
+        <label for="bgt">最高喜欢数(是pixiv高级会员才有效)</label>
+        <input type="number" id="bgt" name="bgt" placeholder="留空表示不限" />
+      </div>
+    </div>
+
+    <div class="group">
+      <label for="s_mode">标签搜索模式</label>
+      <select id="s_mode" name="s_mode">
+        <option value="s_tag">标签(部分一致)</option>
+        <option value="s_tag_full">标签(完全一致)</option>
+        <option value="s_tc">标题、说明文字</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label for="type">图片类型搜索模式</label>
+      <select id="type" name="type">
+        <option value="all">全部</option>
+        <option value="illust_and_ugoira">插画、动图</option>
+        <option value="illust">插画</option>
+        <option value="manga">漫画</option>
+        <option value="ugoira">动图</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <label>sl filter(perhaps pixiv safe level, 2 is safe, 6 is not safe)</label>
+      <div class="sub_group">
+        <label for="min_sl">min sl</label>
+        <input type="number" id="min_sl" name="min_sl" min="2" max="6" placeholder="留空表示不限" />
+        <label for="max_sl">max sl</label>
+        <input type="number" id="max_sl" name="max_sl" min="2" max="6" placeholder="留空表示不限" />
+      </div>
+    </div>
+
+    <div class="group">
+      <label for="aiType">aiType (pixiv ai type, 1 not ai, 2 is ai)</label>
+      <select id="aiType" name="aiType">
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value=''></option>
+      </select>
+    </div>
+
+
+    <div id="status"></div>
+    <button id="save">Save</button>
+    <button id="reset">Reset</button>
+  </div>
+  <script type="module" src="options.js"></script>
+</body>
+
+</html>
