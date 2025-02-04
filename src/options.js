@@ -34,7 +34,13 @@ const saveOptions = () => {
     }
   );
 
-  chrome.runtime.sendMessage({ action: "updateConfig" });
+  chrome.runtime.sendMessage({ action: "updateConfig" }, function (response) {
+    var lastError = chrome.runtime.lastError;
+    if (lastError) {
+      console.log(lastError.message);
+      return;
+    }
+  });
 };
 
 const resetOptions = () => {
