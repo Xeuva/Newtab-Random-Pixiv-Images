@@ -1,9 +1,9 @@
 # Newtab Random Pixiv Images
 
-Randomly picks one image from pixiv search results to replace newtab background. By default search uses "10000users 入り" keyword. You need to login Pixiv first to make search functionality work.
+Randomly picks one image from pixiv search results to replace newtab background. By default search uses "10000users入り" keyword. In bottom right corner, you can load new image or check image details.You may need to login Pixiv first to make search functionality work.
 
 ## Install
-### chrome:
+### chrome/edge:
 1. Clone or download this project to local.
 2. Open chrome and goto "chrome://extensions/" page.
 3. Toggle topright "Developer mode" button to enable chrome developer mode.
