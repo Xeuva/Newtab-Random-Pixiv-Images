@@ -109,7 +109,7 @@ class SearchSource {
   constructor(config) {
     this.searchParam = config;
     this.params = ["order", "mode", "p", "s_mode", "type", "scd", "ecd", "blt", "bgt"];
-    this.totalPage = 300;
+    this.totalPage = 1;
     this.itemsPerPage = 60;
     this.illustInfoPages = {};
   }
